@@ -12,7 +12,6 @@ import {
   Platform,
   Alert,
   ActivityIndicator,
-  TouchableWithoutFeedback,
 } from "react-native";
 
 import * as Font from "expo-font";
@@ -61,7 +60,7 @@ export const Home = () => {
         Alert.alert("Erro", "Credenciais erradas");
       } else {
         //@ts-ignore
-        nav.navigate("createAccount");
+        nav.navigate("cad");
       }
     } catch (error) {
       console.log(error);
@@ -156,7 +155,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 0,
-    paddingVertical: 160,
+    paddingVertical: 120,
   },
 
   container: {

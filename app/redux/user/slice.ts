@@ -37,4 +37,6 @@ const slice = createSlice({
 
 export const userReducer = slice.reducer;
 
-export const userSelect = (state: any) => state.persistedReducer;
+export const { logout, setUser } = slice.actions;
+
+export const userSelect = (state: RootState) => state;
