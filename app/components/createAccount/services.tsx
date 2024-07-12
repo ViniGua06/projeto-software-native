@@ -1,3 +1,4 @@
+import { Alert } from "react-native";
 import { url } from "../../asset/url";
 
 export const CreateAccountServices = () => {
@@ -17,11 +18,20 @@ export const CreateAccountServices = () => {
 
       const data = await res.json();
 
+      const user = await fetch(`${url}/user/${data.userId}`)
+
+      const userData = await user.json()
+
+
+
       const info = {
         status: res.status,
         message: data.message,
         id: data.userId,
+        name: userData.name
       };
+
+      Alert.alert(info.id, info.name)
 
       return info;
     } catch (error) {

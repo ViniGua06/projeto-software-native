@@ -54,13 +54,14 @@ export const Home = () => {
 
   const login = async () => {
     setLoading(true);
+    
     try {
       const message = await service.getInfo(email, password);
       if (message == 400) {
         Alert.alert("Erro", "Credenciais erradas");
       } else {
         //@ts-ignore
-        nav.navigate("cad");
+        nav.navigate("user");
       }
     } catch (error) {
       console.log(error);

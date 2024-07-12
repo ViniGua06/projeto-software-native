@@ -1,18 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage"; // Importe o storage correto
+import storage from "redux-persist/lib/storage"; 
 
-import { userReducer } from "./user/slice"; // Substitua pelo seu rootReducer
+import { userReducer } from "./user/slice"; 
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const persistConfig = {
   key: "root",
-  storage: storage, // Configure o armazenamento corretamente
+  storage: AsyncStorage, 
 };
 
 const persistedReducer = persistReducer(persistConfig, userReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck: false}),
 });
 
 const persistor = persistStore(store);

@@ -11,26 +11,19 @@ const slice = createSlice({
     photo: "",
   },
   reducers: {
-    setUser(state, { payload }) {
-      return {
-        ...state,
-        id: payload.id,
-        name: payload.name,
-        email: payload.email,
-        password: payload.password,
-        photo: payload.photo,
-      };
+    setUser(state, { payload }) {      
+        state.id = payload.id;
+        state.name = payload.name;
+        state.email = payload.email;
+        state.password = payload.password;
+        state.photo = payload.photo;      
     },
-
-    logout(state) {
-      return {
-        ...state,
-        id: "",
-        name: "",
-        email: "",
-        password: "",
-        photo: "",
-      };
+    logout(state) {      
+      state.id = "";
+      state.name = "";
+      state.email = "";
+      state.password = "";
+      state.photo = "";
     },
   },
 });
@@ -39,4 +32,4 @@ export const userReducer = slice.reducer;
 
 export const { logout, setUser } = slice.actions;
 
-export const userSelect = (state: RootState) => state;
+export const userSelect = (state: RootState) => state._persist;

@@ -68,7 +68,6 @@ export const CreateAccount = () => {
 
   const cad = async () => {
     setLoading(true);
-    console.log(password);
     try {
       const info = await service.cadastro(name, email, password);
       if (info?.status == 400) {
@@ -78,7 +77,7 @@ export const CreateAccount = () => {
         dispatch(
           setUser({
             id: info?.id,
-            name: "",
+            name: info?.name,
             email: "",
             password: "",
             photo: "",
